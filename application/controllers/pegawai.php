@@ -42,6 +42,7 @@ class Pegawai extends CI_Controller {
 			);
 
 		$this->m_pegawai->input($data, 'tb_pegawai');
+		$this->session->set_flashdata('add', 'Data Pegawai Berhasil Ditambah');
 		redirect('pegawai');
 	}
 
@@ -51,6 +52,7 @@ class Pegawai extends CI_Controller {
             redirect('pegawai');
     	}else{
     		$this->m_pegawai->del($id_pegawai);
+    		$this->session->set_flashdata('delete', 'Data Pegawai Berhasil Dihapus');
 			redirect('pegawai');
     	}
 		
@@ -62,7 +64,7 @@ class Pegawai extends CI_Controller {
 		$nip = $this->input->post('nip');
 		$nama_pegawai = $this->input->post('nama_pegawai');
 		$tgl_lahir = $this->input->post('tgl_lahir');
-		$jk = $this->input->post('jk');
+		// $jk = $this->input->post('jk');
 		$no_hp = $this->input->post('no_hp');
 		$email = $this->input->post('email');
 
@@ -70,13 +72,15 @@ class Pegawai extends CI_Controller {
 			'nip' => $nip,
 			'nama_pegawai' => $nama_pegawai,
 			'tgl_lahir' => $tgl_lahir,
-			'jk' => $jk,
+			// 'jk' => $jk,
 			'no_hp' => $no_hp,
 			'email' => $email
 			);
 
 		$where = array('id_pegawai' => $id_pegawai);
 		$this->m_pegawai->edit($where,$data,'tb_pegawai');
+		$this->session->set_flashdata('edit', 'Data Pegawai Berhasil Diubah');
+		// $this->output->enable_profiler(TRUE);
 		redirect('pegawai');
 	}
 }

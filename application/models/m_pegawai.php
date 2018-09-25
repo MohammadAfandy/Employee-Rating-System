@@ -6,7 +6,7 @@ class M_pegawai extends CI_Model{
 	}
 
 	function input($data,$table){
-		$this->db->insert($table,$data);
+     	$this->db->insert($table,$data);
 	}
 
 	function del($id_pegawai){

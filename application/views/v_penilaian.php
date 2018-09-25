@@ -42,8 +42,8 @@ if ($this->session->userdata('akses') != 'admin'){
                                 <td><?php echo $nilai->nilai; ?></td>
                             <?php } ?>
 							<td>
-                            <a class="btn btn-info btn-small" data-toggle="modal" href="#modal_edit_penilaian<?php echo $pn->id_penilaian; ?>"> Edit</a>
-                            <a href="#confirm-delete<?php echo $pn->id_pegawai;?>" data-toggle="modal" class="btn btn-danger btn-small">Delete</a>
+                            <a class="btn btn-info btn-small" data-toggle="modal" data-target="#modal_edit_penilaian<?php echo $pn->id_penilaian; ?>"> Edit</a>
+                            <button class="btn btn-danger btn-small" data-href="penilaian/delPenilaian/<?php echo $pn->id_pegawai; ?>" data-toggle="modal" data-target="#confirm-delete">Delete</button> 
 						</tr>
 						<?php } ?>
 					</tbody>
@@ -159,8 +159,7 @@ if ($this->session->userdata('akses') != 'admin'){
 <!--END MODAL Edit penilaian-->
 
 <!-- MODAL Delete Pegawai -->
-<?php foreach ($penilaian as $p){ ?>
-<div class="modal fade" id="confirm-delete<?php echo $p->id_pegawai;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -172,10 +171,14 @@ if ($this->session->userdata('akses') != 'admin'){
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-danger btn-ok" href="penilaian/delpenilaian/<?php echo $p->id_pegawai;?>">Delete</a>
+                <a class="btn btn-danger btn-ok" href="">Delete</a>
             </div>
         </div>
     </div>
 </div>
-<?php }?>
+<script>
+    $('#confirm-delete').on('show.bs.modal', function(e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
+</script>
 <!--END MODAL Delete Pegawai-->
