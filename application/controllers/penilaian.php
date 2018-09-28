@@ -50,6 +50,7 @@ class Penilaian extends CI_Controller {
 						'nilai' => $nilai
 					);		
 			$this->m_penilaian->input($data, 'tb_penilaian');
+			$this->session->set_flashdata('add', 'Data Penilaian Berhasil Ditambah');
 			// $this->output->enable_profiler(TRUE);
 		}
 		redirect('penilaian');
@@ -61,6 +62,7 @@ class Penilaian extends CI_Controller {
             redirect('penilaian');
     	}else{
     		$this->m_penilaian->del($id_pegawai);
+    		$this->session->set_flashdata('delete', 'Data Penilaian Berhasil Dihapus');
 			redirect('penilaian');
     	}
 	}
@@ -77,6 +79,7 @@ class Penilaian extends CI_Controller {
 							'id_kriteria' => $id_kriteria);
 			$data = array('nilai' => $nilai);		
 			$this->m_penilaian->edit($where, $data, 'tb_penilaian');
+			$this->session->set_flashdata('edit', 'Data Penilaian Berhasil Diubah');
 			// $this->output->enable_profiler(TRUE);
 		}
 		redirect('penilaian');

@@ -60,4 +60,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <?php if ($this->session->userdata('akses') != "admin"){
     echo "<p><b><center>Anda Login Sebagai User <br> User Tidak Mempunyai Hak Akses Untuk ADD, EDIT, dan DELETE data</center></b></p>";
   }
-  
+  ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var url = window.location;
+        $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
+        $('ul.nav a').filter(function() {
+             return this.href == url;
+        }).parent().addClass('active');
+    });
+</script> 
