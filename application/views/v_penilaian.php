@@ -178,7 +178,7 @@ if ($this->session->userdata('akses') != 'admin'){
 <?php }?>
 <!--END MODAL Edit penilaian-->
 
-<!-- MODAL Delete Pegawai -->
+<!-- MODAL Delete Penilaian -->
 <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -201,4 +201,4 @@ if ($this->session->userdata('akses') != 'admin'){
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     });
 </script>
-<!--END MODAL Delete Pegawai-->
+<!--END MODAL Delete Penilaian-->
