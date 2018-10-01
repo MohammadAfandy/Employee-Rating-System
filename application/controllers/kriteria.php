@@ -50,17 +50,21 @@ class Kriteria extends CI_Controller {
 	}
 
 	function reset(){
-		$data['kriteria'] = $this->m_kriteria->getData()->result();
+		if($this->session->userdata('akses') != 'admin'){
+            redirect('kriteria');
+    	}else{
+			$data['kriteria'] = $this->m_kriteria->getData()->result();
 
-		foreach ($data['kriteria'] as $k) {
-			$bobot = 0;
-			$id_kriteria = $this->input->post('id_kriteria');
-			$where = array('id_kriteria' => $k->id_kriteria);
-			$data = array(
-				'bobot' => $bobot
-			);
-			$this->m_kriteria->edit($where,$data,'tb_kriteria');
-			$this->session->set_flashdata('set', 'Bobot Kriteria Berhasil Direset');
+			foreach ($data['kriteria'] as $k) {
+				$bobot = 0;
+				$id_kriteria = $this->input->post('id_kriteria');
+				$where = array('id_kriteria' => $k->id_kriteria);
+				$data = array(
+					'bobot' => $bobot
+				);
+				$this->m_kriteria->edit($where,$data,'tb_kriteria');
+				$this->session->set_flashdata('set', 'Bobot Kriteria Berhasil Direset');
+			}
 		}
 	}
 
