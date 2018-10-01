@@ -1,4 +1,19 @@
 <?php
+
+if($this->session->flashdata('set')) {  ?>
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong><?php echo $this->session->flashdata('set'); ?></strong> 
+    </div>
+<?php 
+}elseif ($this->session->flashdata('edit')) { ?>
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong><?php echo $this->session->flashdata('edit'); ?></strong> 
+    </div>
+<?php
+
+}
 if ($this->session->userdata('akses') != 'admin'){
 ?>
 <script>

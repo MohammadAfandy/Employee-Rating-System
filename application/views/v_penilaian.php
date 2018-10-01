@@ -69,8 +69,7 @@ if ($this->session->userdata('akses') != 'admin'){
 						<?php } ?>
 					</tbody>
   				</table>
-  				</div>   
-<!-- <?php echo $this->db->last_query(); ?> -->
+  				</div> 
 			</section>
 		</div>
 	</div>

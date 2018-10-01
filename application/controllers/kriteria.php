@@ -41,7 +41,7 @@ class Kriteria extends CI_Controller {
 				'bobot' => $bobot
 			);
 			$this->m_kriteria->edit($where,$data,'tb_kriteria');
-			
+			$this->session->set_flashdata('set', 'Bobot Kriteria Berhasil DiSet');
 		}
 
 		redirect('kriteria');
@@ -60,7 +60,7 @@ class Kriteria extends CI_Controller {
 		);
 
 		$this->m_kriteria->edit($where,$data,'tb_kriteria');
-	
+		$this->session->set_flashdata('edit', 'Kriteria Berhasil Diubah');
 		redirect('kriteria');
 	}
 
